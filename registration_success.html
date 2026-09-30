@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Eventra | Register</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <span>✦</span> EVENTRA
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="/#events">
+                Events
+            </a>
+
+            <a href="/#categories">
+                Categories
+            </a>
+
+        </div>
+
+
+        <a href="/#events"
+           class="nav-button">
+
+            Explore Events
+
+        </a>
+
+    </nav>
+
+
+
+    <!-- REGISTRATION -->
+
+    <section class="registration-page">
+
+        <div class="registration-container">
+
+
+            <p class="section-label">
+                EVENT REGISTRATION
+            </p>
+
+
+            <h1>
+                Reserve your seat.
+            </h1>
+
+
+            <p class="registration-subtitle">
+
+                Register for
+
+                <strong>
+                    {{ event["name"] }}
+                </strong>
+
+            </p>
+
+
+
+            <!-- EVENT DETAILS -->
+
+            <div class="selected-event">
+
+
+                <div>
+
+                    <span>
+                        DATE
+                    </span>
+
+                    <strong>
+                        {{ event["date"] }}
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        TIME
+                    </span>
+
+                    <strong>
+                        {{ event["time"] }}
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        VENUE
+                    </span>
+
+                    <strong>
+                        {{ event["venue"] }}
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        SEATS LEFT
+                    </span>
+
+                    <strong>
+                        {{ event["available_seats"] }}
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ERROR -->
+
+            {% if error %}
+
+            <div class="error-message">
+
+                {{ error }}
+
+            </div>
+
+            {% endif %}
+
+
+
+            <!-- FORM -->
+
+            <form method="POST"
+                  class="registration-form">
+
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter your phone number"
+                        required
+                    >
+
+                </div>
+
+
+
+                <button type="submit"
+                        class="primary-button register-button">
+
+                    Confirm Registration →
+
+                </button>
+
+
+            </form>
+
+
+
+            <a href="/"
+               class="back-link">
+
+                ← Back to Events
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{{ event["name"] }} | Eventra</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <span>✦</span> EVENTRA
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="/#events">
+                Events
+            </a>
+
+            <a href="/#categories">
+                Categories
+            </a>
+
+        </div>
+
+        <a href="/#events"
+           class="nav-button">
+
+            Explore Events
+
+        </a>
+
+    </nav>
+
+
+    <!-- EVENT DETAILS -->
+
+    <section class="registration-page">
+
+        <div class="registration-container">
+
+            <p class="section-label">
+                EVENT DETAILS
+            </p>
+
+            <h1>
+                {{ event["name"] }}
+            </h1>
+
+            <p class="registration-subtitle">
+                {{ event["description"] }}
+            </p>
+
+
+            <div class="selected-event">
+
+                <div>
+                    <span>CATEGORY</span>
+                    <strong>{{ event["category"] }}</strong>
+                </div>
+
+                <div>
+                    <span>DATE</span>
+                    <strong>{{ event["date"] }}</strong>
+                </div>
+
+                <div>
+                    <span>TIME</span>
+                    <strong>{{ event["time"] }}</strong>
+                </div>
+
+                <div>
+                    <span>VENUE</span>
+                    <strong>{{ event["venue"] }}</strong>
+                </div>
+
+                <div>
+                    <span>TOTAL SEATS</span>
+                    <strong>{{ event["capacity"] }}</strong>
+                </div>
+
+                <div>
+                    <span>SEATS AVAILABLE</span>
+                    <strong>{{ event["available_seats"] }}</strong>
+                </div>
+
+            </div>
+
+
+            {% if event["available_seats"] > 0 %}
+
+            <a href="{{ url_for('register', event_id=event['id']) }}"
+               class="primary-button"
+               style="display: block; text-align: center;">
+
+                Register for this Event →
+
+            </a>
+
+            {% else %}
+
+            <div class="error-message">
+                Sorry, this event is fully booked.
+            </div>
+
+            {% endif %}
+
+
+            <a href="/"
+               class="back-link">
+
+                ← Back to Events
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+</body>
+
+</html>
